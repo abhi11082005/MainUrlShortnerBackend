@@ -36,7 +36,7 @@ const handleUserLoginAuth = async (req, res) => {
 
         const sessionId = uuidv4(); // Generate session ID
         const mappedValue=setUser(sessionId,mainData)
-        return res.status(200).json({ message: "Logged in successfully", sessionId });
+        return res.status(200).cookie('userLogin',sessionId).json({ message: "Logged in successfully", sessionId });
     } catch (error) {
         console.error("Login error:", error);
         res.status(500).json({ message: "Internal Server Error" });
